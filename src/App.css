@@ -1,38 +1,193 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+/* Body & global */
+body {
+  background: linear-gradient(135deg, #141e30, #243b55);
+  font-family: 'Segoe UI', sans-serif;
+  color: white;
   min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Navbar */
+.navbar {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
+  background: linear-gradient(90deg, #0e2a4c, #142f57); /* subtle gradient */
+  padding: 10px 30px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.5);
+  border-radius: 0 0 12px 12px;
+}
+
+.navbar-brand {
+  color: #fff !important;
+  font-weight: bold;
+  font-size: 1.6rem;
+  text-decoration: none;
+}
+
+.navbar-links {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-links .nav-link {
+  color: #fff !important;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: all 0.3s;
+}
+
+.navbar-links .nav-link:hover {
+  background-color: #1b2a44;
+  color: #ff7f50 !important;
+}
+
+.btn-logout {
+  background: linear-gradient(45deg, #6a11cb, #2575fc);
+  border: none;
+  padding: 6px 14px;
+  color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.btn-logout:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+  transition: all 0.3s;
+}
+
+/* Centered container for login/register forms */
+.centered-container {
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  min-height: calc(100vh - 80px); /* navbar height offset */
+}
+
+.auth-box {
+  background: rgba(15, 25, 40, 0.85); /* dark translucent */
+  padding: 40px 30px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 400px;
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+.auth-box h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 1.8rem;
+}
+
+/* Form controls */
+.form-control {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: none;
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+}
+
+.form-control::placeholder {
+  color: #ccc;
+}
+
+/* Buttons */
+.btn-custom {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  background: linear-gradient(45deg, #6a11cb, #2575fc);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-custom:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(106,17,203,0.5);
+}
+
+/* Dashboard task cards */
+
+.tasks-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  margin-bottom: 8px;
+}
+
+.badge.Work {
+  background: #2575fc;
+}
+
+.badge.Personal {
+  background: #ff7f50;
+}
+
+.badge.Study {
+  background: #6a11cb;
+}
+/* DARK MODE */
+.dark {
+  background: linear-gradient(135deg, #141e30, #243b55);
+  color: white;
+  min-height: 100vh;
+}
+
+/* LIGHT MODE */
+.light {
+  background: #f1f5f9;
+  color: #0f172a;
+  min-height: 100vh;
+}
+
+/* Theme button */
+.btn-theme {
+  margin-left: 15px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(45deg, #6a11cb, #2575fc);
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.light .task-card {
+  background: #ffffff;
+  color: #0f172a;
+  border: 1px solid #e5e7eb;
+}
+.light .task-card h5 {
+  color: #0f172a;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.light .task-card p {
+  color: #374151;
+}
+
+.light .task-card small {
+  color: #6b7280;
 }

@@ -1,24 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import Login from "./components/Login";
+import Register from "./components/Register";
+import Dashboard from "./components/Dashboard";
+import Navbar from "./components/Navbar";
+import Landing from "./components/Landing"; // new landing page
 
 function App() {
+  const [token, setToken] = useState(localStorage.getItem("token"));
+  const [theme, setTheme] = useState("dark");
+
+  // Sync token with localStorage
+  useEffect(() => {
+    if (!token) localStorage.removeItem("token");
+  }, [token]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  <div className={theme}>
+    <Router>
+      <Navbar token={token} setToken={setToken} theme={theme} setTheme={setTheme}/>
+
+      <Routes>
+        <Route path="/" element={!token ? <Landing /> : <Navigate to="/dashboard" />} />
+        <Route path="/login" element={!token ? <Login setToken={setToken} /> : <Navigate to="/dashboard" />} />
+        <Route path="/register" element={!token ? <Register /> : <Navigate to="/dashboard" />} />
+        <Route path="/dashboard" element={token ? <Dashboard /> : <Navigate to="/" />} />
+      </Routes>
+    </Router>
+  </div>
   );
 }
 
