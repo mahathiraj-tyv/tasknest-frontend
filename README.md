@@ -83,7 +83,9 @@ Flask_Project/
 
 ### 1. Clone the repository
 ```bash
-git clone <your-repo-link>
+I have created two repositories for my Flask React project these are the links for backend and  frontend
+git clone https://github.com/mahathiraj-tyv/tasknest-backend.git
+git clone https://github.com/mahathiraj-tyv/tasknest-frontend.git
 cd Flask_project
 
 2. Backend Setup
